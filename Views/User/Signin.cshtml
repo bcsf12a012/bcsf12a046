@@ -1,0 +1,41 @@
+﻿@model termProj.Models.User2
+
+@{
+    ViewBag.Title = "Signin";
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
+}
+
+<h2>Signin</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User2</legend>
+<div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @ViewBag.UserName
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password)
+            @ViewBag.Password
+
+        </div>
+
+        <p>
+            <input type="submit" value="Sign in" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

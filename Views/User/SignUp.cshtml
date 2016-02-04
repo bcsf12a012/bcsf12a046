@@ -1,0 +1,104 @@
+﻿@model termProj.Models.User2
+
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_LayoutForm.cshtml";
+}
+
+<h2>SignUp</h2>
+
+<form action="/User/SignUp" method="post"  enctype = "multipart/form-data">
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User2</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+
+            <input type="text" id="VerifyInput" name ="UserName" />
+          @*  @Html.ValidationMessageFor(model => model.UserName)*@
+            <input type="button" value="check" id="b1" />
+                            <h4> <span id="checking">Checking...</span></h4>
+                <h4>  <span id="result"></span></h4>
+
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+
+        
+
+            @Html.LabelFor(model => model.ImageUrl, htmlAttributes: new { @class = "control-label " })
+
+                <input type="file" name="image" />
+                <label>  @ViewBag.Image</label>
+
+
+
+
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+</form>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#checking').hide();
+        //alert("blur");
+                $('#b1').on("click", function () {
+          //  alert("click");
+            var input = $('#VerifyInput').val();
+            if (input=='' )
+                $('#result').text("Please Enter a User  Name");
+            else {
+                //alert(' Name = ' + input);
+                $('#checking').show();
+                $.getJSON("/User/CheckklassName?klassNameKey=" + input, function (data) {
+                    $('#checking').hide();
+                    if (data) {
+                        $('#result').text("User Name is available");
+
+                    }
+                    else {
+                        $('#result').text("User  already exists in database");
+                    }
+                });
+            }
+        });
+
+
+    });
+
+</script>

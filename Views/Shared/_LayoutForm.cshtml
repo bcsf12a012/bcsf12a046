@@ -1,0 +1,42 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <title>@ViewBag.Title </title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href='//fonts.googleapis.com/css?family=Londrina+Solid|Coda+Caption:800|Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="~/Content/login.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+</head>
+
+<body >
+    <div class="container">
+
+            
+                @RenderBody()
+                <hr />
+         
+    
+
+    </div> <!-- /container -->
+
+    <footer>
+        <p class="text-center">&copy; @DateTime.Now.Year -By Umer shehzad</p>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</body>
+</html>
